@@ -22,7 +22,7 @@ Run your bot locally from your machine or use any cloud service that you are com
 
 ## Bot Commands Functionlity
 ### ?settextchannel \[text_channel_id\]
-use ?settextchannel in the above mentioned way to set the text channel where the bot will collect words from and show the story it has compiled so far
+use ?settextchannel in the above mentioned way to set the text channel where the bot will collect words from and show the story it has compiled so far. This command can only be used if the user has administrator permission.
 
 ### ?makestory
 use ?makestory to compile the story from so far collected words. This function only works if the word limit has reached the minimum_limit

@@ -29,8 +29,8 @@ use ?makestory to compile the story from so far collected words. This function o
 ### ?forcemakestory
 use ?forcemakestory to compile the story regardless of minimum world limit, this command can only work if you have administrator privilege in the server
 
-### ?limit \[number\] -> In development process
-change the minimum word limit of you bot
+### ?changelimit \[number\]
+change the minimum word limit of your bot
 
 <br>
 
@@ -51,6 +51,9 @@ this is the .txt file where all the words are kept stored for the next story com
 ### user.txt
 this is the .txt file where the order of the user is maintained, this helps checking if a user is sending more than one words consecutively
 
+### limit.txt
+the minimum word count is stored here and changed when the ?changelimit command is used
+
 ### channel_id.txt
 this is where the active channel_id is stored
 
@@ -70,6 +73,16 @@ get_id() functions return the channel_id that is stored in the channel_id.txt
 argument: message -> discord.Message <br>
 return: status -> int <br>
 set_id() function set the channel id to given argument. returns 1 if no argument is given, returns 2 if too much argument is given, return 0 if only 1 argument is given
+
+### setup.py -> get_limit()
+argument: None <br>
+return: string -> 
+get the current minimum word limit from limit.txt
+
+### setup.py -> set_limit(message)
+argument: message -> discord.Message
+return: status -> int
+set the limit to user defined and update the limit.txt according to it. returns the new limit that is set by the user. return -1, if there is no argument provided, return -2, if there is more than 2 argument provided, return -3, if the only argument is not an integer, return -4, if the only argument is an integer which is less than or equal to 0.
 
 ### story.py -> get_story(file)
 argument: file -> string (name of the .txt file that stores the story) <br>

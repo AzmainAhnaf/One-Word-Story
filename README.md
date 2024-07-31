@@ -19,6 +19,7 @@ Clone this repository and inside the .env file, insert your bot token
 Run your bot locally from your machine or use any cloud service that you are comfortable with
 
 <br>
+
 ## Bot Commands Functionlity
 ### ?settextchannel \[text_channel_id\]
 use ?settextchannel in the above mentioned way to set the text channel where the bot will collect words from and show the story it has compiled so far

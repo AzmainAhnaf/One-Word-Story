@@ -5,7 +5,7 @@ The program is a functional discord bot that creates story from words given by t
 
 <br>
 
-### Table of Contents
+## Table of Contents
 - [TL;DR](#tldr)
 - [Setting up bot in your server](#setting-up-the-bot-in-your-server)
 - [Bot Commands Functionality](#bot-commands-functionlity)

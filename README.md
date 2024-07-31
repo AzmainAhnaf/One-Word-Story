@@ -96,7 +96,7 @@ return: story -> string <br>
 get_story_force() function compiles the story and send it the the server channel regardless of it's word counts, user needs admin permission to use this command
 
 ### story.py -> add_word(message, file)
-argument: message -> discord.Message, file -> string (story.txt file)
+argument: message -> discord.Message, file -> string (story.txt file) <br>
 return: boolean <br>
 add_word first check if the word is eligible meaning if the length of the message is at most 1 word, if not then it return false. Then it checks if the current user is same as the latest user  using user.txt who has added a word, if it is same, then it returns false. If the message has passed all the security check then the message is added to story.txt file in a single line and the user who sent the message will be appended user.txt file in a single line
 

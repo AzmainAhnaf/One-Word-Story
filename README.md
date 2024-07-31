@@ -44,7 +44,7 @@ this is where the whole programme come together and act as one single entity, th
 this python file stores the function of adding words to the and story and compiling story, detailed explanation is given below
 
 ### setup.py
-this python file helps to get the current active text channel id where the bot is activated, it prompts to set one text channel id if none present
+this python file helps setup the bot with channel_id and limit.
 
 ### story.txt
 this is the .txt file where all the words are kept stored for the next story compilation

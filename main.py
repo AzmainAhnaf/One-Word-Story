@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 import discord
-from story import get_story
+from story import get_story, add_word, get_story_force
+from setup import get_id
 
 # Loading Token
 load_dotenv()
@@ -22,14 +23,52 @@ async def on_ready():
 # Handling messages
 @client.event
 async def on_message(message: discord.Message) -> None:
+    print(message.content)
+
+    # Cheking if the message was sent by the bot itself
     if (message.author == client.user):
         return
     
-    if (message.channel.id == 1268158484231356447):
-        if (message.content == "?makestory"):
-            await get_story("story.txt")
+    # checking if the user has admin privileges
+    is_admin: bool = message.author.top_role.permissions.administrator
+    
+    #setting up the text channel
+    if (message.content.startswith("?settextchannel")):
+        messages = message.content.split()
+        # Handling excpetions and setting text channel
+        if len(messages) == 1:
+            await message.channel.send("```\nuse ?settextchannel [text channel id]\n```")
+        elif len(messages) > 2:
+            await message.channel.send("```\nToo much arguments provided\n```")
         else:
-            pass # implement add_word
+            id = messages[1].strip()
+            with open("channel_id.txt", "w") as file:
+                file.write(id + "\n")
+            await message.add_reaction("✅")
+        return
+
+    # Getting text channel id
+    text_channel_id: str = get_id()
+
+    if (str(message.channel.id).strip() == text_channel_id.strip()):
+        if (message.content.lower() == "?makestory"):
+            await message.channel.send("```\n" + get_story("story.txt") + "\n```")
+        elif (message.content.lower() == "?forcemakestory"):
+            # Checking if the user has administrative permission
+            if is_admin:
+                await message.channel.send("```\n" + get_story_force("story.txt") + "\n```")
+                check = True
+            else:
+                await message.channel.send("```\nYou are not authorized to use this command\n```")
+        else:
+            state: bool = add_word(message, "story.txt") # checking if the word was added to story
+            if (state):
+                await message.add_reaction("✅")
+            else:
+                await message.add_reaction("❌")
+    elif message.content.startswith("?"):
+        await message.channel.send("```\nuse ?settextchannel [channel id] to set your text channel\n```")
+        
 
     
 # Main entry point

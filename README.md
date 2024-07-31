@@ -57,3 +57,36 @@ this is where the active channel_id is stored
 ### .env
 This is where your bot token is stored
 
+<br>
+
+## Programme explaination
+
+### setup.py -> get_id()
+argument: None <br>
+return: id -> string <br>
+get_id() functions return the channel_id that is stored in the channel_id.txt
+
+### setup.py -> set_id(message)
+argument: message -> discord.Message <br>
+return: status -> int <br>
+set_id() function set the channel id to given argument. returns 1 if no argument is given, returns 2 if too much argument is given, return 0 if only 1 argument is given
+
+### story.py -> get_story(file)
+argument: file -> string (name of the .txt file that stores the story) <br>
+return: story -> string <br>
+get_story() function compiles the story and count the word of the current story, if the word is strictly less than the current limit, it will prompt the user to input more words, otherwise, it will compile the story and print it to the text channel and empty the story.txt file and user.txt file
+
+### story.py -> get_story_force(file)
+argument: file -> string (name of the .txt file that stores the story) <br>
+return: story -> string <br>
+get_story_force() function compiles the story and send it the the server channel regardless of it's word counts, user needs admin permission to use this command
+
+### story.py -> add_word(message, file)
+argument: message -> discord.Message, file -> string (story.txt file)
+return: boolean <br>
+add_word first check if the word is eligible meaning if the length of the message is at most 1 word, if not then it return false. Then it checks if the current user is same as the latest user  using user.txt who has added a word, if it is same, then it returns false. If the message has passed all the security check then the message is added to story.txt file in a single line and the user who sent the message will be appended user.txt file in a single line
+
+### main.py
+main.py maintains various commands and how the programme shall execute it
+
+

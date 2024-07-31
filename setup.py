@@ -24,3 +24,32 @@ def set_id(message: discord.Message) -> int:
             file.write(id + "\n")
         return 0 #await message.add_reaction("✅")
     return
+
+def get_limit() -> int:
+    limit = 0
+    with open("limit.txt", "r") as limit_file:
+        for line in limit_file:
+            limit = line
+    limit = int(limit.strip())
+    return limit
+
+# Setting the limit of words and handling exceptions
+def set_limit(message: discord.Message) -> int:
+    messages = message.content.split()
+    print(messages)
+    if (len(messages) == 1):
+        return -1 # No argument
+    elif (len(messages) > 2):
+        return -2 # Too much argument
+    elif (len(messages) == 2):
+        new_limit = messages[1]
+        if (new_limit.isnumeric()):
+            new_limit = int(new_limit)
+            if new_limit < 1:
+                return -4 # Non-positive limit
+            else:
+                with open("limit.txt", "w") as limit_file:
+                    limit_file.write(new_limit)
+                    return new_limit
+        else:
+            return -3 # Argument is not an integer

@@ -23,7 +23,7 @@ async def on_ready():
 # Handling messages
 @client.event
 async def on_message(message: discord.Message) -> None:
-    print(message.content)
+    # print(message.content)
 
     # Cheking if the message was sent by the bot itself
     if (message.author == client.user):
@@ -32,15 +32,39 @@ async def on_message(message: discord.Message) -> None:
     # checking if the user has admin privileges
     is_admin: bool = message.author.top_role.permissions.administrator
     
-    #setting up the text channel
-    if (message.content.startswith("?settextchannel")):
-        status: int = set_id(message)
-        if status == 1:
-            await message.channel.send("```\nuse ?settextchannel [text channel id]\n```")
-        elif status == 2:
-            await message.channel.send("```\nToo much arguments provided\n```")
-        elif status == 0:
-            await message.add_reaction("✅")
+    # setting up the text channel
+    if (message.content.lower().startswith("?settextchannel")):
+        if is_admin:
+            status: int = set_id(message)
+            if status == 1:
+                await message.channel.send("```\nuse ?settextchannel [text channel id]\n```")
+            elif status == 2:
+                await message.channel.send("```\nToo much arguments provided\n```")
+            elif status == 0:
+                await message.add_reaction("✅")
+        else:
+            await message.channel.send("```\nYou are not authorized to use this command\n```")
+    
+    # setting new limit
+    if (message.content.lower().startswith("?changelimit")):
+        if is_admin:
+            status: int = set_id(message)
+            print(status)
+            if status == -1:
+                # no argument is given
+                await message.channel.send("```\nuse ?changelimit [number]")
+            elif status == -2:
+                # Too much argument is given
+                await message.channel.send("```\ntoo much argument\n```")
+            elif status == -3:
+                await message.channel.send("```\nargument is not an integer\n```")
+            elif status == -4:
+                await message.channel.send("```\nargument is not a non-positive integer\n```")
+            else:
+                await message.channel.send(f"```\nnew limit is set to {status}\n```")
+        else:
+            await message.channel.send("```\nYou are not authorized to use this command\n```")
+        return
 
     # Getting text channel id
     text_channel_id: str = get_id()

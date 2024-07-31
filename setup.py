@@ -15,14 +15,14 @@ def set_id(message: discord.Message) -> int:
     messages = message.content.split()
     # Handling excpetions and setting text channel
     if len(messages) == 1:
-        return 1 
+        return 1 # No arguments
     elif len(messages) > 2:
-        return 2
+        return 2 # Too much arguments
     else:
         id = messages[1].strip()
         with open("channel_id.txt", "w") as file:
             file.write(id + "\n")
-        return 0 #await message.add_reaction("✅")
+        return 0 # Used correctly
     return
 
 def get_limit() -> int:
@@ -49,7 +49,7 @@ def set_limit(message: discord.Message) -> int:
                 return -4 # Non-positive limit
             else:
                 with open("limit.txt", "w") as limit_file:
-                    limit_file.write(new_limit)
+                    limit_file.write(str(new_limit))
                     return new_limit
         else:
             return -3 # Argument is not an integer

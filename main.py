@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import discord
 from story import get_story, add_word, get_story_force
-from setup import get_id, set_id
+from setup import get_id, set_id, set_limit
 
 # Loading Token
 load_dotenv()
@@ -23,7 +23,7 @@ async def on_ready():
 # Handling messages
 @client.event
 async def on_message(message: discord.Message) -> None:
-    # print(message.content)
+    #print(message.content)
 
     # Cheking if the message was sent by the bot itself
     if (message.author == client.user):
@@ -44,15 +44,16 @@ async def on_message(message: discord.Message) -> None:
                 await message.add_reaction("✅")
         else:
             await message.channel.send("```\nYou are not authorized to use this command\n```")
+        return
     
     # setting new limit
     if (message.content.lower().startswith("?changelimit")):
         if is_admin:
-            status: int = set_id(message)
+            status: int = set_limit(message)
             print(status)
             if status == -1:
                 # no argument is given
-                await message.channel.send("```\nuse ?changelimit [number]")
+                await message.channel.send("```\nuse ?changelimit [number]\n```")
             elif status == -2:
                 # Too much argument is given
                 await message.channel.send("```\ntoo much argument\n```")

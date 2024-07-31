@@ -1,5 +1,5 @@
 import discord
-from setup import get_limit, set_limit
+from setup import get_limit
 
 # minimum length of the story
 limit = get_limit()
@@ -26,6 +26,8 @@ def get_story_force(file: str) -> str:
 
 # Compiling story and checking minimum length of the story
 def get_story(file: str) -> str:
+    # getting the limit
+    limit = get_limit()
     story = ""
     count = 0
     # Compiling story from txt file

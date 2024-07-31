@@ -23,5 +23,5 @@ use ?makestory to compile the story from so far collected words. This function o
 ### ?forcemakestory
 use ?forcemakestory to compile the story regardless of minimum world limit, this command can only work if you have administrator privilege in the server
 
-### ?limit [\number\] -> In development process
+### ?limit \[number\] -> In development process
 change the minimum word limit of you bot

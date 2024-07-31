@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import discord
 from story import get_story, add_word, get_story_force
-from setup import get_id
+from setup import get_id, set_id
 
 # Loading Token
 load_dotenv()
@@ -34,18 +34,13 @@ async def on_message(message: discord.Message) -> None:
     
     #setting up the text channel
     if (message.content.startswith("?settextchannel")):
-        messages = message.content.split()
-        # Handling excpetions and setting text channel
-        if len(messages) == 1:
+        status: int = set_id(message)
+        if status == 1:
             await message.channel.send("```\nuse ?settextchannel [text channel id]\n```")
-        elif len(messages) > 2:
+        elif status == 2:
             await message.channel.send("```\nToo much arguments provided\n```")
-        else:
-            id = messages[1].strip()
-            with open("channel_id.txt", "w") as file:
-                file.write(id + "\n")
+        elif status == 0:
             await message.add_reaction("✅")
-        return
 
     # Getting text channel id
     text_channel_id: str = get_id()

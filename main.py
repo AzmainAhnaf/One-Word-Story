@@ -35,7 +35,7 @@ async def on_message(message: discord.Message) -> None:
     # setting up the text channel
     if (message.content.lower().startswith("?settextchannel")):
         if is_admin:
-            user_input = message.content
+            user_input = message.content.lower()
             status: int = set_id(user_input)
             if status == 1:
                 await message.channel.send("```\nuse ?settextchannel [text channel id]\n```")
@@ -50,7 +50,7 @@ async def on_message(message: discord.Message) -> None:
     # setting new limit
     if (message.content.lower().startswith("?changelimit")):
         if is_admin:
-            user_input = message.content
+            user_input = message.content.lower()
             status: int = set_limit(user_input)
             print(status)
             if status == -1:

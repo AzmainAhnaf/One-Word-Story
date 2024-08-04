@@ -12,7 +12,7 @@ def get_id() -> str:
     return str(id).strip()
 
 def set_id(message: str) -> int:
-    messages = message.split()
+    messages = message.lower().split()
     # Handling excpetions and setting text channel
     if len(messages) == 1:
         return 1 # No arguments
@@ -35,7 +35,7 @@ def get_limit() -> int:
 
 # Setting the limit of words and handling exceptions
 def set_limit(message: str) -> int:
-    messages = message.split()
+    messages = message.lower().split()
     # print(messages)
     if (len(messages) == 1):
         return -1 # No argument
@@ -45,13 +45,11 @@ def set_limit(message: str) -> int:
         new_limit = messages[1]
         if (new_limit.isnumeric()):
             new_limit = int(new_limit)
-            if new_limit < 1:
-                return -4 # Non-positive limit
+            if new_limit == 0:
+                return -4 # zrgument is 0
             else:
                 with open("limit.txt", "w") as limit_file:
                     limit_file.write(str(new_limit))
                     return new_limit
         else:
-            return -3 # Argument is not an integer
-        
-print(set_limit("?changelimit 50"))
+            return -3 # Argument is not a positive integer

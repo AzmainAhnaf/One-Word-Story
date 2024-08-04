@@ -55,6 +55,9 @@ this python file stores the function of adding words to the and story and compil
 ### setup.py
 this python file helps setup the bot with channel_id and limit.
 
+### test_setup.py
+this python file tests the functions of setup.py using pytest library
+
 ### story.txt
 this is the .txt file where all the words are kept stored for the next story compilation
 

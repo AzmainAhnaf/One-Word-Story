@@ -11,8 +11,8 @@ def get_id() -> str:
     id = id[0].strip()
     return str(id).strip()
 
-def set_id(message: discord.Message) -> int:
-    messages = message.content.split()
+def set_id(message: str) -> int:
+    messages = message.split()
     # Handling excpetions and setting text channel
     if len(messages) == 1:
         return 1 # No arguments
@@ -34,9 +34,9 @@ def get_limit() -> int:
     return limit
 
 # Setting the limit of words and handling exceptions
-def set_limit(message: discord.Message) -> int:
-    messages = message.content.split()
-    print(messages)
+def set_limit(message: str) -> int:
+    messages = message.split()
+    # print(messages)
     if (len(messages) == 1):
         return -1 # No argument
     elif (len(messages) > 2):
@@ -53,3 +53,5 @@ def set_limit(message: discord.Message) -> int:
                     return new_limit
         else:
             return -3 # Argument is not an integer
+        
+print(set_limit("?changelimit 50"))

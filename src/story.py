@@ -1,5 +1,5 @@
 import discord
-from setup import get_limit
+from src.setup import get_limit
 
 # minimum length of the story
 limit = get_limit()
@@ -43,7 +43,7 @@ def get_story(file: str) -> str:
     # Deleting the story and users
     with open(file, "w") as words:
         pass
-    with open("user.txt", "w") as usernames:
+    with open("user.txt", "w") as _:
         pass
     return story
 

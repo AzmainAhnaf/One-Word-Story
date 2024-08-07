@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
 import discord
-from story import get_story, add_word, get_story_force
-from setup import get_id, set_id, set_limit
+from src.story import get_story, add_word, get_story_force
+from src.setup import get_id, set_id, set_limit
 
 # Loading Token
 load_dotenv()
@@ -88,6 +88,7 @@ async def on_message(message: discord.Message) -> None:
                 await message.add_reaction("✅")
             else:
                 await message.add_reaction("❌")
+                
     elif message.content == "?help":
         await message.channel.send("```\nuse ?settextchannel [channel id] to set your text channel\n```")
         await message.channel.send("```\nSee our online documentation to learn more\n\nhttps://github.com/AzmainAhnaf/One-Word-Story/blob/main/README.md\n```")

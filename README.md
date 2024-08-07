@@ -96,7 +96,7 @@ This is where your bot token is stored
 
 <br>
 
-## Programme explaination
+## Programme explanation
 
 ### setup.py -> get_id()
 argument: None <br>

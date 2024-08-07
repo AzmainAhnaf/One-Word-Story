@@ -48,7 +48,7 @@ $ python src/main.py
 <br>
 
 ## Bot Commands Functionlity
-### `?settextchannel \[text_channel_id\]`
+### `?settextchannel [text_channel_id]`
 use ?settextchannel in the above mentioned way to set the text channel where the bot will collect words from and show the story it has compiled so far. This command can only be used if the user has administrator permission.
 
 ### `?makestory`
@@ -57,7 +57,7 @@ use ?makestory to compile the story from so far collected words. This function o
 ### `?forcemakestory`
 use ?forcemakestory to compile the story regardless of minimum world limit, this command can only work if you have administrator privilege in the server
 
-### `?changelimit \[number\]`
+### `?changelimit [number]`
 change the minimum word limit of your bot, by default, the limit is set to 10
 
 ### `?help`

@@ -24,32 +24,48 @@ if you are having trouble, you can watch this [Youtube video](https://www.youtub
 from 2:24 to 6:30. Collect your token
 
 ### Step 2: Clone the repository
-Clone this repository and inside the .env file, insert your bot token
+```sh
+# clone repository using git
+$ git clone https://github.com/AzmainAhnaf/One-Word-Story.git
+
+# change directory to the repository
+$ cd One-Word-Story
+```
 
 ### Step 3: Run your bot
-Run your bot locally from your machine or use any cloud service that you are comfortable with
+Run your bot locally from your machine or use any cloud service that you are comfortable with:
+```sh
+# install the required libraries
+$ pip install -r requirements.txt
+
+# create a .env file and store your bot token in it
+$ echo "DISCORD_TOKEN=<your_bot_token>" > .env
+
+# run the bot
+$ python src/main.py
+```
 
 <br>
 
 ## Bot Commands Functionlity
-### ?settextchannel \[text_channel_id\]
+### `?settextchannel \[text_channel_id\]`
 use ?settextchannel in the above mentioned way to set the text channel where the bot will collect words from and show the story it has compiled so far. This command can only be used if the user has administrator permission.
 
-### ?makestory
+### `?makestory`
 use ?makestory to compile the story from so far collected words. This function only works if the word limit has reached the minimum_limit
 
-### ?forcemakestory
+### `?forcemakestory`
 use ?forcemakestory to compile the story regardless of minimum world limit, this command can only work if you have administrator privilege in the server
 
-### ?changelimit \[number\]
+### `?changelimit \[number\]`
 change the minimum word limit of your bot, by default, the limit is set to 10
 
-### ?help
+### `?help`
 use ?help to get the online documentation and also how to setup text channel in one's server
 
 <br>
 
-## Programme files explaination
+## Programme files explanation
 
 ### main.py
 this is where the whole programme come together and act as one single entity, the story bot

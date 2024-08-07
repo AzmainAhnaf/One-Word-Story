@@ -24,10 +24,26 @@ if you are having trouble, you can watch this [Youtube video](https://www.youtub
 from 2:24 to 6:30. Collect your token
 
 ### Step 2: Clone the repository
-Clone this repository and inside the .env file, insert your bot token
+```sh
+# clone repository using git
+$ git clone https://github.com/AzmainAhnaf/One-Word-Story.git
+
+# change directory to the repository
+$ cd One-Word-Story
+```
 
 ### Step 3: Run your bot
-Run your bot locally from your machine or use any cloud service that you are comfortable with
+Run your bot locally from your machine or use any cloud service that you are comfortable with:
+```sh
+# install the required libraries
+$ pip install -r requirements.txt
+
+# create a .env file and store your bot token in it
+$ echo "DISCORD_TOKEN=<your_bot_token>" > .env
+
+# run the bot
+$ python src/main.py
+```
 
 <br>
 

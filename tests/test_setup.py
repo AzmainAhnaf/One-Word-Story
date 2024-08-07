@@ -1,5 +1,4 @@
-import pytest
-from setup import get_id, set_id, get_limit, set_limit
+from src.setup import get_id, set_id, get_limit, set_limit
 
 # Testing variable taken from .txts
 limit: int = 0
